@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Survey </title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <div class="survey-header">
+    
+    <h1> Survey </h1>
+  
+  <div class="survey-body">
+    <h2 class="main-title"> Complete survey for a crisp high-five! </h2>
+
+  <form>
+    <label for=""> Name: </label>
+    <input type="text" name="textBoxes" value="" placeholder="Enter Name"> 
+    <br>
+        
+    <label for=""> Email: </label>
+    <input type="text" name="textBoxes" id="Email" value="" placeholder="Enter Email"> 
+    <br>
+
+    <div class="youtube-box">
+    <label for=""> Do you want to visit a youtube page? </label>
+    <input type="radio" name="subscribe" value="yes" /> Yes
+    <input type="radio" name="subscribe" value="no" /> No
+    <br>
+    </div>
+
+    <div class="sport-box">
+    <p> What is your favorite sport? </p>
+    </div>
+
+    <div class="choice-box">
+    <label for="sports"></label>
+
+    <select name="sports" id="sports">
+      <option value="Football"> Football </option>
+      <option value="Soccer"> Soccer </option>
+      <option value="Basketball"> Basketball </option>
+      <option value="Baseball"> Baseball </option>
+      <option value="LoL"> League of Legends </option>
+    </select>
+    </div>
+    
+    <input type="button" id="button" value="Submit">
+  </form>
+  </div>
+</div>
+
+  <script>
+    
+    const button = document.querySelector('#button');
+
+    button.onclick = function () {
+      const rbs = document.querySelectorAll('input[name="subscribe"]');
+      const tbs = document.querySelectorAll('input[name="textBoxes"]');
+      const Sport = document.querySelectorAll('input[name="sports"]');
+
+      let selectedValue;
+      Array = ['https://www.youtube.com/user/NFL', 'https://www.youtube.com/user/mls', 'https://www.youtube.com/user/NBA', 
+      'https://www.youtube.com/user/MLB', 'https://www.youtube.com/channel/UCvqRdlKsE5Q8mf8YXbdIJLw'];
+      let cont = 1;
+      let i;
+
+      while (true){
+        for(const tb of tbs){
+          if(tb.value == ''){
+            alert('Name/Email is blank');
+            cont = 0;
+            break;
+          }
+        }
+        if (cont == 0){
+          break;
+        }
+        for (const rb of rbs) {
+          if (rb.checked) {
+            selectedValue = rb.value;
+            cont = 0;
+            break;
+          }
+        }
+        if (cont == 0){
+          break;
+        }
+      }
+      var x = document.getElementById('sports').value;
+
+      if (x == "Football"){
+        i=0;
+      }
+      else if(x == "Soccer"){
+        i=1;
+      }
+      else if(x == "Basketball"){
+        i=2;
+       }
+      else if(x == "Baseball"){
+        i=3;
+      }
+      else if(x == "LoL"){
+        i=4;
+      }
+  
+      if (selectedValue == 'yes'){
+        open(Array[i], '_blank');
+      }
+      else if (selectedValue == 'no'){
+        location.reload();
+        alert('Thank you for your response!');
+      }
+      else{
+        alert('Please select a response for all quiestions.');
+
+      }
+    };
+  </script>
+
+<div class="survey-footer">
+
+</div>
+</body>
+</html>
